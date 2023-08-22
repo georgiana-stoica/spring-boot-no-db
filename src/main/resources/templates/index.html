@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Toys</title>
+</head>
+<body>
+<h1>All Toys</h1>
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Color</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Image</th>
+    </tr>
+    <tr th:each="toy : ${toys}">
+        <td th:text="${toy.name}"></td>
+        <td th:text="${toy.color}"></td>
+        <td th:text="${toy.type}"></td>
+        <td th:text="${toy.description}"></td>
+        <td><img th:src="@{${toy.imageURL}}" alt="Toy Image" width="50" height="50"></td>
+    </tr>
+</table>
+</body>
+</html>

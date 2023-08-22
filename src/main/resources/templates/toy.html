@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Toy Detail</title>
+</head>
+<body>
+<h1>Toy Details</h1>
+<p><strong>Name:</strong> <span th:text="${toy.name}"></span></p>
+<p><strong>Color:</strong> <span th:text="${toy.color}"></span></p>
+<p><strong>Type:</strong> <span th:text="${toy.type}"></span></p>
+<p><strong>Description:</strong> <span th:text="${toy.description}"></span></p>
+<p><strong>Image:</strong> <img th:src="@{${toy.imageURL}}" alt="Toy Image" width="200" height="200"></p>
+</body>
+</html>
