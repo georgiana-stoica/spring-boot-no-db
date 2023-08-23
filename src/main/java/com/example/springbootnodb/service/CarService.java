@@ -8,17 +8,36 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
-@Getter
 @RequiredArgsConstructor
 public class CarService {
     private final OrderService orderService;
     private final List<Car> carList = new ArrayList<>();
 
+    public List<Car> getCarList() {
+        return carList.stream().filter(car -> !car.isDeleted()).collect(Collectors.toList());
+    }
+
     public void saveCar(Car car) {
         car.setId((long) carList.size());
+        car.setDeleted(false);
         carList.add(car);
+    }
+
+    public void deleteCar(Long carId) {
+        Car selectedCar = null;
+        for (Car carItr : carList) {
+            if (carItr.getId().equals(carId)) {
+                selectedCar = carItr;
+                break;
+            }
+        }
+
+        if (selectedCar == null) return;
+
+        selectedCar.setDeleted(true);
     }
 
     public void updateCar(Car car) {

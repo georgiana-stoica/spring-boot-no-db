@@ -12,4 +12,5 @@ public class Car {
     private String name;
     private Long stock;
     private Double price;
+    private boolean isDeleted = false;
 }

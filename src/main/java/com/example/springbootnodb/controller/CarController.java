@@ -18,6 +18,11 @@ public class CarController {
         return carService.getCarList();
     }
 
+    @DeleteMapping("{id}")
+    public void deleteCar(@PathVariable Long id) {
+        carService.deleteCar(id);
+    }
+
     @PostMapping
     public void createCar(@RequestBody Car car) {
         carService.saveCar(car);
